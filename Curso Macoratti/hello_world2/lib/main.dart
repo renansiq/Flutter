@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world2/widget_listView.dart';
+
 
 void main() {
   runApp(
@@ -17,93 +19,41 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Lista básica",
       theme: ThemeData(primaryColor: Colors.blue),
-      home: Scaffold(
-        drawer: Drawer(
-          backgroundColor: Color.fromARGB(199, 255, 235, 59),
-          child: drawerListView(),
-        ),
+      home: Scaffold(        
         appBar: AppBar(          
-          centerTitle: true,
-          title: Text("Lista Básica",           
+          //centerTitle: true,
+          title: Text("Lista Dinâmica",           
            style: TextStyle(color: Colors.black,
            fontWeight: FontWeight.bold           
            ),
           ),
         backgroundColor: Colors.red          
         ),
-      body: buildListView(),
+      body: builderListView(),
       )   // home: primeira tela que será exibida, fiz um método para colocar um Scaffold
     );
   }
 }
-  buildListView() {
-    return ListView(
-      children:[
-        ListTile(
-          leading: Icon(Icons.add_location),
-          title: Text("texto"),
-          subtitle: Text("meu texto"),
-          trailing: Icon(Icons.add_shopping_cart),
-          selected: true,       // Destacar (selecionado)
-          onTap: (){
-            print("ok");
-          } ,
-        ),
+builderListView() {
+  final itens = List<String>.generate(1000, (i) => "item $i");   // gerador de lista de String
+  return ListView.builder(
+    // itemCount: itens.length,     // para cálculo do tamanho da Tamanho da lista
+    //scrollDirection: Axis.horizontal,
+    itemBuilder: (context, index){
+      return ListTile(
+        leading: Icon(Icons.arrow_right),
+        title: Text('${itens[index]}'),
+        onTap: (){
+          debugPrint('${itens[index]} foi selecionado');
+        },
+      );
+      /* return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 1.0),
+        color: Colors.lightGreen,
+        child: Text('$index'),
+      ); */
+    },
+  );
+}
 
-        ListTile(
-          leading: Icon(Icons.add_to_photos),
-          title: Text("texto"),
-          subtitle: Text("meu texto"),
-          trailing: Icon(Icons.add_box),
-          enabled: true,   // indica como opção/botão desativado
-          onLongPress: (){
-            print("");
-          },
-        ),
 
-        Padding(
-          padding: const EdgeInsets.only(top: 30.0),
-          child: Text("Texto de Exemplo",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 25.0),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: Container(            
-            color: Colors.green,
-            height: 20.0,          
-          ),
-        )
-      ],
-    );
-  }
-
-  drawerListView() {
-    return ListView(
-      children:[
-        ListTile(
-          leading: Icon(Icons.add_location),
-          title: Text("texto"),
-          subtitle: Text("meu texto"),
-          trailing: Icon(Icons.add_shopping_cart),
-          selected: true,       // Destacar (selecionado)
-          onTap: (){
-            print("ok");
-          },
-        ),
-
-        ListTile(
-          leading: Icon(Icons.add_a_photo),
-          title: Text("texto"),
-          subtitle: Text("meu texto"),
-          trailing: Icon(Icons.add_box),
-          enabled: true,   // indica como opção/botão desativado
-          onLongPress: (){
-            print("");
-          },
-        )
-      ]
-    );
-  }

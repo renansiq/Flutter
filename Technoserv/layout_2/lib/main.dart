@@ -49,14 +49,18 @@ class minhaTela extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: estilo                    
                       ),
-                      Icon(Icons.add_circle)
+                      Icon(Icons.add_circle,
+                        semanticLabel: "Adicionar",
+                        size: 50.0,
+                        color: Colors.green
+                      )
                     ],
                   )
                 ),              
                 Container(                      
                   width: tamanho.width/3,
                   height: tamanho.height/3,
-                  color: Colors.yellow,
+                  color: Colors.yellow,                  
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -65,9 +69,13 @@ class minhaTela extends StatelessWidget {
                        wordSpacing: 1.0,
                        color: Colors.black,
                        decorationStyle: TextDecorationStyle.wavy,
-                       letterSpacing: 3.0)
+                       letterSpacing: 3.0,
+                       )
                       ),
-                      Icon(Icons.add_alarm) 
+                      Icon(Icons.add_alarm,
+                      size: 45,
+                      color: Colors.red,
+                      ) 
                     ],
                   ),
                 ),
@@ -75,14 +83,20 @@ class minhaTela extends StatelessWidget {
                   width: tamanho.width/3,
                   height: tamanho.height/3,
                   color: Colors.green,
-                  padding: EdgeInsets.only(bottom: 15.0),
+                  padding: EdgeInsets.only(bottom: 15.0),                  
+                  decoration: BoxDecoration(
+                    color: Colors.amber[50],
+                    border: Border.all(color: Colors.purple,
+                    width: 3)
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [      
                       Icon(Icons.add_task_rounded),                
                       Text("Quadrado 3",
                       style: estilo.copyWith(
-                        fontStyle: FontStyle.italic)
+                        fontStyle: FontStyle.italic
+                        )
                       )                      
                     ],
                   ),
@@ -91,7 +105,7 @@ class minhaTela extends StatelessWidget {
             ),
             Row(
               children: [
-                Container(
+                Container(                  
                   width: tamanho.width/2,
                   height: tamanho.height/3,
                   color: Colors.pink,
@@ -158,14 +172,16 @@ class minhaTela extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 1000,
+                        width: 200,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("Quadrado 7",
                              style: estilo2                
                             ),
-                            Icon(Icons.add_link_rounded)
+                            Icon(Icons.add_link_rounded,
+                            color: Colors.white,
+                            size: 30)
                           ],
                         ),
                       ) 
